@@ -5,7 +5,7 @@
 **Código/Turma:** T998-21 <br>
 **Professor:** Ricardo Carubbi <br>
 **Data:** 21/03/2024 <br>
-**Aluno(a):** Edward Stewart Cavalcante <br>
+**Aluno(a):** Edward Stewart <br>
 **Matrícula:** 2410601 <br>
 
 **1a chamada (Sim/Não):** sim <br>
