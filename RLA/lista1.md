@@ -60,14 +60,30 @@ Sabe-se que os funcionários que recebem atualmente salário de até R$ 500 ter�
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INÍCIO]) --> B{Digite o salário atual do funcionário} 
+B --> C[\salario_atual\] 
+C --> D{salario_atual <= 500} 
+D --TRUE--> E[Novo_salario = salario_atual * 1.2] 
+D --FALSE--> F[Novo_salario = salario_atual * 1.1] 
+E --> G([FIM]) 
+F --> G([FIM]) 
+G --> H{Exibir Novo_salario}
+H --> I([FIM])
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+ALGORITMO calcular_novo_salario
+INÍCIO 
+DECLARE salario_atual, novo_salario NUMÉRICO 
+ESCREVA "Digite o salário atual "
+LEIA salario_atual 
+SE salario_atual <= 500 ENTAO novo_salario = salario_atual * 1.20 
+SENAO novo_salario = salario_atual * 1.10
+FIM_SE 
+ESCREVA "O novo salário do funcionário é: " novo_salario 
+FIM
 ```
 
 #### Teste de mesa (1.0 ponto)
@@ -83,15 +99,40 @@ Represente, em fluxograma e pseudocódigo, um algoritmo para calcular a média a
 #### Fluxograma (1 ponto)
 
 ```mermaid
-flowchart TD
-A([INICIO]) --> B([FIM])
+flowchart TD 
+A([INÍCIO]) --> B{Digite a primeira nota} 
+B --> C[\nota1\] 
+C --> D{nota1 >= 0 e nota1 <= 10} 
+D --TRUE--> E{Digite a segunda nota} 
+E --TRUE--> F[\nota2\] 
+F --> G{nota2 >= 0 e nota2 <= 10} 
+G --TRUE--> H{media = nota1 + nota2, / 2} 
+H --TRUE--> I{media >= 6} 
+I --TRUE--> J{Exibir Aprovado}
+J --> K([FIM])
+I --FALSE--> L{Exibir Reprovado}
+L --> K 
+H --FALSE--> M{Exibir Notas inválidas} 
+M --> K 
+D --FALSE--> M 
+C --FALSE--> M
 ```
 
 #### Pseudocódigo (1 ponto)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+ALGORITMO calcular_media 
+INÍCIO
+DECLARE nota1, nota2, media NUMÉRICO 
+ESCREVA "Digite a primeira nota do aluno " 
+LEIA nota1 
+ESCREVA "Digite a segunda nota do aluno: " 
+LEIA nota2  = (nota1 + nota2) / 2
+SE media >= 6.0 ENTAO ESCREVA "Aluno aprovado!" 
+SENAO
+ESCREVA "Aluno reprovado!" 
+ FIM_SE 
+ FIM
 ```
 
 #### Teste de mesa (1 ponto)
@@ -108,15 +149,33 @@ Caso não atender a restrição de idade, calcular quantos anos faltam para o ca
 #### Fluxograma (1.0 ponto)
 
 ```mermaid
-flowchart TD
-A([INICIO]) --> B([FIM])
+flowchart TD 
+A([INÍCIO]) --> B{Digite a idade do candidato} 
+B --> C[\idade\] 
+C --> D{idade >= 18} 
+D --TRUE--> E{Exibir Candidato apto para tirar CNH} 
+E --> F([FIM]) 
+D --FALSE--> G{Exibir Candidato não apto para tirar CNH} 
+G --> H{calcular anos que faltam} 
+H --> I([FIM])
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+ALGORITMO verificar_cnh 
+INÍCIO 
+DECLARE idade, idade_minima, anos_faltando INTEIRO 
+idade_minima = 18
+ESCREVA "Digite a idade do candidato: " 
+LEIA idade 
+SE idade >= idade_minima 
+ENTAO 
+ESCREVA "O candidato pode tirar a CNH." 
+SENAO anos_faltando = idade_minima - idade 
+ESCREVA "Só poderá tirar a CNH após" anos_faltando "ano(s)"
+FIM_SE 
+FIM
 ```
 
 #### Teste de mesa (1.0 ponto)
