@@ -101,17 +101,64 @@ Receba dois números reais e um operador e efetue a operação correspondente co
 O algoritmo deve retornar o resultado da operação selecionada simulando todas as operações de uma calculadora simples.
 
 #### Fluxograma (1.0 ponto)
-
 ```mermaid
-flowchart TD
-A([INICIO]) --> B([FIM])
-```
+flowchart TD 
+A([INÍCIO]) --> B{Digite o primeiro número} 
+B --> C[\n1\] 
+C --> D{Digite o operador} 
+D --> E[\operador\] 
+E --> F{Digite o segundo número} 
+F --> G[\n2\] 
+G --> H{Operador == +}
+H --> I{resultado = n1 + n2}
+I --> J{Exibir resultado} 
+J --> K([FIM]) 
+G --> L{Operador == -} 
+L --> M{resultado = n1 - n2} 
+M --> N{Exibir resultado} 
+N --> K 
+G --> O{Operador == *} 
+O --> P{resultado = n1 * n2} 
+P --> Q{Exibir resultado} 
+Q --> K 
+G --> R{Operador == /}
+ R --> S{SE n2 != 0} 
+ S --> T{resultado = n1 / n2} 
+ T --> U{Exibir resultado} 
+ U --> K 
+ S --> V{Senão} 
+ V --> W{Exibir Erro: Divisão por zero!}
+ W --> K
+ ```
 
 #### Pseudocódigo (1.0 ponto)
-
 ```
-Algoritmo Calculadora
-FIM_ALGORITMO
+1    ALGORITMO  calculadora_simples  
+2    DECLARE  num1,  num2,  resultado:  REAL  
+3    DECLARE  operador:  CARACTERE 
+4    ESCREVA  "Digite o primeiro número: "  
+5    LEIA  num1  
+6    ESCREVA  "Digite o segundo número: "  
+7    LEIA  num2  
+8    ESCREVA  "Digite o operador (+, -, *, /): "  
+9    LEIA  operador  
+10  SE  operador  ==  '+'  ENTÃO  
+11            resultado  =  num1  +  num2  
+12  SENÃO  SE  operador  ==  '-'  ENTÃO  
+13            resultado  =  num1  -  num2  
+14  SENÃO  SE  operador  ==  '*'  ENTÃO  
+15           resultado  =  num1  *  num2  
+16  SENÃO  SE  operador  ==  '/'  ENTÃO  
+17  SE  num2  !=  0  ENTÃO  
+18                      resultado  =  num1  /  num2  
+19             SENÃO  
+20                      ESCREVA  "Erro: Divisão por zero!"  
+21             FIM_SE  
+22  SENÃO  
+23           ESCREVA  "Operador inválido!"  
+24  FIM_SE  
+25           ESCREVA  "Resultado: ",  resultado  
+26  FIM
 ```
 
 #### Teste de mesa (0.5 ponto)
