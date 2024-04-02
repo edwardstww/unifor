@@ -22,21 +22,36 @@ J --> I
 ```
 
 #### Pseudocódigo
-```
-1  ALGORITMO calReajuste
-2  DECLARE  sal, sal_reaj: real, prof: caractere
-3  INICIO
-4  LEIA sal, prof
-5  ESCOLHA
-6   CASO prof == “Técnico”		// caso 1
-7     sal_reaj ← 1.5 * sal
-8   CASO prof = “Gerente”		// caso 2
-9     sal_reaj ← 1.3 * sal
-10  SENÃO
-11    sal_reaj ← 1.1 * sal
-12 FIM_ESCOLHA
-13 ESCREVA “Salário Reajustado = “, sal_reaj
-14 FIM
+```java
+ALGORITMO calReajuste
+DECLARE  sal, sal_reaj: real, prof: caractere
+
+INICIO
+
+    // Insira seu comentário
+    LEIA sal, prof
+
+    // Insira seu comentário
+    ESCOLHA
+
+        // Insira seu comentário
+        CASO prof == “Técnico”		
+            sal_reaj ← 1.5 * sal
+
+        // Insira seu comentário
+        CASO prof = “Gerente”		
+            sal_reaj ← 1.3 * sal
+
+    // Insira seu comentário
+    SENÃO
+        sal_reaj ← 1.1 * sal
+
+    FIM_ESCOLHA
+
+    // Insira seu comentário
+    ESCREVA “Salário Reajustado = “, sal_reaj
+
+FIM
 ```
 
 #### Teste
@@ -55,22 +70,63 @@ Calcule a média de quatro números inteiros dados.
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{"Digite o número 1:"}}
+B --> C[/num1/]
+C --> D{{"Digite o número 2:"}}
+D --> E[/num2/]
+E --> F{{"Digite o número 3:"}}
+F --> G[/num3/]
+G --> H{{"Digite o número 2:"}}
+H --> I[/num4/]
+I --> J["media = (num1 + num2 + num3 + num4)/4"]
+J --> K{{A média é, media}}
+K --> L([FIM]) 
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
-```
-Algoritmo Media
-FIM_ALGORITMO
+```java
+ALGORTIMO Media
+DECLARE num1, num2, num3, num4: REAL
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Digite o número 1:"
+
+    // Insira seu comentário
+    LEIA num1
+
+    // Insira seu comentário
+    ESCREVA "Digite o número 2:"
+
+    // Insira seu comentário
+    LEIA num2
+
+    // Insira seu comentário
+    ESCREVA "Digite o número 3:"
+
+    // Insira seu comentário
+    LEIA num3
+
+    // Insira seu comentário
+    ESCREVA "Digite o número 4:"
+
+    // Insira seu comentário
+    LEIA num4
+
+    // Insira seu comentário
+    media <- (num1 + num2 + num3 + num4)/4
+    ESCREVA "A média é", media
+
+FIM
 ```
 
 #### Teste de mesa (0.5 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| num1 | num2 | num3 | num4 | saída | 
+| --   | --   | --   | --   | --    | 
+| 0.25 | 0.25 | 2.50 | 1.00 | 1.00  | 
 
 ### Exercício 02 (2.5 pontos)
 Leia uma temperatura dada em Celsius (C) e imprima o equivalente em Fahrenheit (F). (Fórmula de conversão: F = (9/5) * C + 32)
@@ -79,72 +135,172 @@ Leia uma temperatura dada em Celsius (C) e imprima o equivalente em Fahrenheit (
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{"Digite a temperatura em Celisus:"}}
+B --> C[/C/]
+C --> D["F = (9/5) * C + 32"]
+D --> E{{A temperatura em Fahrenheit é, F, graus}}
+E --> F([FIM])
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
-```
-Algoritmo ConverteCelsiusFarenheit
-FIM_ALGORITMO
+```java
+ALGORTIMO ConverteCelsiusFarenheit
+DECLARE C, F: REAL
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Digite a temperatura em Celisus:"
+
+    // Insira seu comentário
+    LEIA C
+
+    // Insira seu comentário
+    F <- (9/5) * C + 32
+
+    // Insira seu comentário
+    ESCREVA "A temperatura em Fahrenheit é", F, "graus"
+
+FIM
 ```
 
 #### Teste de mesa (0.5 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| C  | F  | saída                                  | 
+| -- | -- | --                                     |
+| 0  | 32 | A temperatura em Fahrenheit é 32 graus |
 
 ### Exercício 03 (2.5 pontos)
 Receba dois números reais e um operador e efetue a operação correspondente com os valores recebidos (operandos). 
 O algoritmo deve retornar o resultado da operação selecionada simulando todas as operações de uma calculadora simples.
 
 #### Fluxograma (1.0 ponto)
+
 ```mermaid
 flowchart TD
-A([INÍCIO]) --> B{Digite o primeiro número} 
-B --> C[\num1\] 
-C --> D{Digite o operador +, -, *, /} 
-D --> E{Digite o segundo número}
-E --> F[\num2\]
-E --> Z{Para exibir resultado digite =}
- F --> G[\operador\] 
- G --> H{Operador == +} 
- H --> I{resultado = num1 + num2} 
- I --> J{Exibir resultado} 
- J --> K([FIM]) 
- G --> L{Operador == -} 
- L --> M{resultado = num1 - num2} 
- M --> N{Exibir resultado} 
- N --> K 
- G --> O{Operador == *} 
- O --> P{resultado = num1 * num2} 
- P --> Q{Exibir resultado} 
- Q --> K 
- G --> R{Operador == /} 
- R --> S{SE num2 != 0} 
- S --> T{resultado = num1 / num2} 
- T --> U{Exibir resultado} 
- U --> K 
- S --> V{Senão} 
-V --> W{Exibir Erro: Divisão por zero!}
-  W --> K 
-  G --> X{Senão}
-   X --> Y{Exibir Operador inválido!} 
-   Y --> K
-   ```
-
-#### Pseudocódigo (1.0 ponto)
+A([INICIO]) --> B{{"Operações válidas: 1(soma), 2(subtração), 3(multiplicação) e 4(divisão)"}}
+B --> C{{Digite uma operação:}}
+C --> D[/op/]
+D --> E{{Digite um número:}}
+E --> F[/num1/]
+F --> G{{Digite outro número:}}
+G --> H[/num2/]
+H --> I{op == 1}
+I --FALSE--> J{op == 2}
+J --FALSE--> L{op == 3}
+L --FALSE--> O{op == 4}
+O --FALSE--> Q{{Operação inválida!}}
+Q --> R([FIM])
+I --TRUE--> M[res = num1 + num2]
+M --> S{{num1, + , num2, =, res}}
+J --TRUE--> K[res = num1 - num2]
+K --> T{{num1, - , num2, =, res}}
+L --TRUE--> N[res = num1 * num2]
+N --> U{{num1, * , num2, =, res}}
+O --TRUE--> P{num2 != 0}
+P --FALSE--> X{{Impossível dividir!}}
+P --TRUE--> Z[res = num1 / num2]
+Z --> V{{num1, / , num2, =, res}}
+X --> R
+S --> R
+T --> R
+U --> R
+V --> R
 ```
 
+#### Pseudocódigo (1.0 ponto)
+
+```java
+ALGORITMO CalculadoraSimples
+DECLARE op: INTEIRO; num1,num2,res: REAL
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Operações válidas: 1(soma), 2(subtração), 3(multiplicação) e 4(divisão)"
+
+    // Insira seu comentário
+    ESCREVA "Digite uma operação:"
+
+    // Insira seu comentário
+    LEIA op
+
+    // Insira seu comentário
+    ESCREVA "Digite um número:"
+    LEIA num1
+
+    // Insira seu comentário
+    ESCREVA "Digite outro número:"
+    LEIA num2
+
+    // Insira seu comentário
+    ESCOLHA
+
+        // Insira seu comentário
+        CASO op == 1
+
+            // Insira seu comentário
+            res = num1 + num2
+
+            // Insira seu comentário
+            ESCREVA num1, "+", num2, "=", res
+
+        // Insira seu comentário
+        CASO op == 2
+
+            // Insira seu comentário
+            res = num1 - num2
+
+            // Insira seu comentário
+            ESCREVA num1, "-", num2, "=", res
+
+        // Insira seu comentário
+        CASO op == 3
+
+            // Insira seu comentário
+            res = num1 * num2
+
+            // Insira seu comentário
+            ESCREVA num1, "*", num2, "=", res
+
+        // Insira seu comentário
+        CASO op == 4
+
+            // Insira seu comentário
+            SE num2 != 0 ENTAO
+
+                // Insira seu comentário
+                res = num1 / num2
+
+                // Insira seu comentário
+                ESCREVA num1, "/", num2, "=", res
+
+            // Insira seu comentário
+            SENAO
+                ESCREVA "Impossível dividir!"
+
+            FIM_SE
+
+    // Insira seu comentário
+    SENAO
+        ESCREVA "Operação inválida!"
+
+    FIM_ESCOLHA
+
+FIM
+```
 
 #### Teste de mesa (0.5 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| num1 | num2 | op | num2 != 0 | res | saída               | 
+| --   | --   | -- | --        | --  | --                  |
+| 1    | 0    | 1  |           | 1   | 1 + 0 = 1           |
+| 1    | 0    | 2  |           | 1   | 1 - 0 = 1           |
+| 1    | 0    | 3  |           | 0   | 1 * 0 = 0           |
+| 1    | 0    | 4  | False     |     | Impossível dividir! |
+| 1    | 2    | 4  | True      | 0.5 | 1 / 2 = 0,5         |
+| 1    | 2    | 5  |           |     | Operação inválida!  |
 
 ### Exercício 04 (2.5 pontos)
 Elaborar um algoritmo que, dada a idade, classifique nas categorias: infantil A (5 - 7 anos), infantil B (8 -10 anos), juvenil A (11 - 13 anos), juvenil B (14 -17 anos) e adulto (maiores que 18 anos).
@@ -153,57 +309,92 @@ Elaborar um algoritmo que, dada a idade, classifique nas categorias: infantil A 
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{"Digite a idade do aluno:"}}
+B --> C[/idade/]
+C --> D{idade >=5 <br>E <br>idade <= 7}
+D --FALSE--> F{idade >=8 <br>E <br>idade <= 10}
+F --FALSE--> G{idade >=11 <br>E <br>idade <= 13}
+G --FALSE--> H{idade >=14 <br>E <br>idade <= 17}
+H --FALSE--> I{idade >=18}
+I --FALSE--> P{{"Digite uma idade válida!"}}
+P --> Z([FIM])
+D --TRUE--> Q{{Infantial A}}
+F --TRUE--> K{{"Infantial B"}}
+G --TRUE--> L{{Juvenil A}}
+H --TRUE--> M{{Juvenil B}}
+I --TRUE--> N{{Adulto}}
+Q --> Z
+K --> Z
+L --> Z
+M --> Z
+N --> Z
 ```
 
 #### Pseudocódigo (1.0 ponto)
-ALGORITMO calculadora_simples
 
-    DECLARE num1, num2, resultado: REAL
-    DECLARE operador: CARACTERE
-    
-    ESCREVA "Digite o primeiro número: "
-    LEIA num1
-
-    ESCREVA "Digite o operador (+, -, *, /): "
-    LEIA operador
-
-    SE operador == '+' ENTÃO
-        ESCREVA "Digite o segundo número: "
-        LEIA num2
-        resultado = num1 + num2
-    SENÃO SE operador == '-' ENTÃO
-        ESCREVA "Digite o segundo número: "
-        LEIA num2
-        resultado = num1 - num2
-    SENÃO SE operador == '*' ENTÃO
-        ESCREVA "Digite o segundo número: "
-        LEIA num2
-        resultado = num1 * num2
-    SENÃO SE operador == '/' ENTÃO
-        ESCREVA "Digite o segundo número: "
-        LEIA num2
-        SE num2 != 0 ENTÃO
-            resultado = num1 / num2
-        SENÃO
-            ESCREVA "Erro: Divisão por zero!"
-            FIM_SE
-    SENÃO
-        ESCREVA "Operador inválido!"
-    FIM_SE
-
-    SE operador == '+' OU operador == '-' OU operador == '*' OU (operador == '/' E num2 != 0) ENTÃO
-        ESCREVA "Resultado: ", resultado
-    FIM
-FIM_ALGORITMO
 ```
-Algoritmo ClassificaCategoria
-FIM_ALGORITMO
+ALGORTIMO ClassificaCategoria
+DECLARE idade: INTEIRO
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Digite a idade do aluno:"
+
+    // Insira seu comentário
+    LEIA idade
+
+    // Insira seu comentário
+    ESCOLHA
+
+        // Insira seu comentário
+        CASO idade >=5 E idade <= 7
+
+            // Insira seu comentário
+            ESCREVA "Infantial A"
+
+        // Insira seu comentário
+        CASO idade >=8 E idade <= 10
+
+            // Insira seu comentário
+            ESCREVA "Infantial B"
+
+        // Insira seu comentário
+        CASO idade >=11 E idade <= 13
+
+            // Insira seu comentário
+            ESCREVA "Juvenil A"
+
+        // Insira seu comentário
+        CASO idade >=14 E idade <= 17
+
+            // Insira seu comentário
+            ESCREVA "Juvenil B"
+
+        // Insira seu comentário
+        CASO idade >=18
+
+            // Insira seu comentário
+            ESCREVA "Adulto"
+
+    // Insira seu comentário
+    SENAO
+
+        // Insira seu comentário
+        ESCREVA "Digite uma idade válida!"
+
+    FIM_ESCOLHA
+
+FIM
 ```
 
 #### Teste de mesa (0.5 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| idade | idade >=8 E idade <= 10 | idade >=11 E idade <= 13 | idade >=14 E idade <= 17 | idade >=18 | saída                       | 
+| --    | --                      | --                       | --                       | --         | --                          |
+| 4     | False                   | False                    | False                    | False      | Digite uma idade válida!    |
+| -4    | False                   | False                    | False                    | False      | Digite uma idade válida!    |
+| 8     | True                    | False                    | False                    | False      | Infantial A                 |
+| 11    | False                   | True                     | False                    | False      | Infantial B                 |
+| 17    | False                   | False                    | True                     | False      | Infantial C                 |
+| 21    | False                   | False                    | False                    | True       | Adulto                      |
