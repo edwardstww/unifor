@@ -79,28 +79,28 @@ DECLARE a,b,axu: REAL
 
 INICIO
 
-    // Insira seu comentário
+    // Variável "a" como dado de entrada
     ESCREVA "Digite o valor da a:"
 
-    // Insira seu comentário
+    // Armazena a entrada do usuário na variável "a"
     LEIA a
 
-    // Insira seu comentário
+    // Variável "b" como dado de entrada
     ESCREVA "Digite o valor da b:"
 
-    // Insira seu comentário
+    // Armazena a entrada do usuário na variável "b"
     LEIA b
 
-    // Insira seu comentário
+    // Variável "a" atribuída à "aux"
     aux <- a 
 
-    // Insira seu comentário
+    // Variável "b" atribuída à "a"
     a <- b
 
-    // Insira seu comentário
+    // Variável "aux" atribuída à "b"
     b <- aux
 
-    // Insira seu comentário
+    // Exibe o dado de saída das variáveis "a" e "b"
     ESCREVA "a=", a
     ESCREVA "b=", b
 
