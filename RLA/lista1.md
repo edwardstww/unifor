@@ -24,27 +24,45 @@ H --> Z
 I --> Z
 ```
 
-#### Pseudocódigo (0,5 ponto)
-```
-1  ALGORTIMO verifica_par_impar
-2  DECLARE numero, resto: INTEIRO
-3  ESCREVA "Digite um número: "
-4  INICIO
-4  LEIA numero
-5  SE numero >= 0 ENTAO                  // verifica se o inteiro é positivo
-6    resto = numero % 2                 // calcula o resto da divisão por 2
-7    SE resto == 0 ENTAO                // verifica se o resto é igual a zero
-8      ESCREVA "O número é par!"
-9    SENAO
-10     ESCREVA "O número é impar!"
-11   FIM_SE
-11  SENAO                                // caso inteiro for negativo (condição linha 5)
-12    ESCREVA "O número deve ser postivo!"
-13  FIM_SE
-13 FIM
+#### Pseudocódigo
+```java
+ALGORTIMO verifica_par_impar
+DECLARE numero, resto: INTEIRO
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Digite um número: "
+    
+    // Insira seu comentário
+    LEIA numero
+    
+    // Insira seu comentário
+    SE numero >= 0 ENTAO
+
+        // Insira seu comentário
+        resto <- numero % 2
+
+        // Insira seu comentário
+        SE resto == 0 ENTAO
+            ESCREVA "O número é par!"
+
+        // Insira seu comentário
+        SENAO
+          ESCREVA "O número é impar!"
+
+        FIM_SE
+
+    // Insira seu comentário
+    SENAO             
+        ESCREVA "O número deve ser postivo!"
+
+    FIM_SE
+
+FIM
 ```
 
-#### Teste de mesa (0,25 ponto)
+#### Tabela de testes (0,25 ponto)
 | numero | numero >= 0 | resto | resto == 0 | Saída |
 | -- | -- | -- | -- | -- | 
 | -1 | F |   |   | "O número deve ser postivo!" |
@@ -60,38 +78,53 @@ Sabe-se que os funcionários que recebem atualmente salário de até R$ 500 ter�
 
 ```mermaid
 flowchart TD
-A([INÍCIO]) --> B{Digite o salário atual do funcionário} 
-B --> C[\salario_atual\] 
-C --> D{salario_atual <= 500} 
-D --TRUE--> E[Novo_salario = salario_atual * 1.2] 
-D --FALSE--> F[Novo_salario = salario_atual * 1.1] 
-E --> G([FIM]) 
-F --> G([FIM]) 
-G --> H{Exibir Novo_salario}
-H --> I([FIM])
+A([INICIO]) --> B{{"Digite seu salário atual:"}}
+B --> C[/sal_atual/]
+C --> D{sal_atual <= 500}
+D --FALSE--> E[sal_reaj = sal_atual * 1.1]
+D --TRUE--> F[sal_reaj = sal_atual * 1.2]
+E --> G{{O novo salário é, sal_reaj}}
+F --> G
+G --> H([FIM])
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
-```
-ALGORITMO calcular_novo_salario
-INÍCIO 
-DECLARE salario_atual, novo_salario NUMÉRICO 
-ESCREVA "Digite o salário atual "
-LEIA salario_atual 
-SE salario_atual <= 500 ENTAO novo_salario = salario_atual * 1.20 
-SENAO novo_salario = salario_atual * 1.10
-FIM_SE 
-ESCREVA "O novo salário do funcionário é: " novo_salario 
+```java
+ALGORTIMO ReajusteSalario
+DECLARE sal_atual, sal_reaj: REAL
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Digite seu salário atual:"
+
+    // Insira seu comentário
+    LEIA sal_atual
+
+    // Insira seu comentário
+    SE sal_atual <= 500 ENTAO
+        sal_reaj = sal_atual * 1.2
+
+    // Insira seu comentário
+    SENAO
+        sal_reaj = sal_atual * 1.1
+
+    FIM_SE
+
+    // Insira seu comentário
+    ESCREVA "O novo salário é R$", sal_reaj
+
 FIM
 ```
 
-#### Teste de mesa (1.0 ponto)
+#### Tabela de testes (1.0 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| sal_atual | sal_atual >= 500 |sal_reaj       | saída                   | 
+| --        | --               | --            | --                      | 
+| 400       | False            | 400*1.2 = 480 | O novo salário é R$ 480 |
+| 500       | True             | 500*1.2 = 600 | O novo salário é R$ 600 |
+| 600       | True             | 600*1.1 = 660 | O novo salário é R$ 660 |
 
 ## Exercício 03 (3 pontos)
 Represente, em fluxograma e pseudocódigo, um algoritmo para calcular a média aritmética entre duas notas de um aluno e mostrar sua situação, que pode ser aprovado ou reprovado.
@@ -99,48 +132,75 @@ Represente, em fluxograma e pseudocódigo, um algoritmo para calcular a média a
 #### Fluxograma (1 ponto)
 
 ```mermaid
-flowchart TD 
-A([INÍCIO]) --> B{Digite a primeira nota} 
-B --> C[\nota1\] 
-C --> D{nota1 >= 0 e nota1 <= 10} 
-D --TRUE--> E{Digite a segunda nota} 
-E --TRUE--> F[\nota2\] 
-F --> G{nota2 >= 0 e nota2 <= 10} 
-G --TRUE--> H{media = nota1 + nota2, / 2} 
-H --TRUE--> I{media >= 6} 
-I --TRUE--> J{Exibir Aprovado}
-J --> K([FIM])
-I --FALSE--> L{Exibir Reprovado}
-L --> K 
-H --FALSE--> M{Exibir Notas inválidas} 
-M --> K 
-D --FALSE--> M 
-C --FALSE--> M
+flowchart TD
+A([INICIO]) --> B{{"Digite a nota 1:"}}
+B --> C[/nota1/]
+C --> D{{"Digite a nota 2:"}}
+D --> E[/nota2/]
+E --> F{nota1 >= 0<br> OU <br>nota2 >= 0}  
+F --FALSE--> K{{"A nota deve ser maior que zero!"}}
+K --> L([FIM])
+F --TRUE--> G["media = (nota1 + nota2)/2"]
+G --> H{media >= 7}
+H --FALSE--> I{{"O aluno está reprovado!"}}
+H --TRUE--> J{{"O aluno está aprovado!"}}
+I --> L
+J --> L
 ```
 
 #### Pseudocódigo (1 ponto)
 
-```
-ALGORITMO calcular_media 
-INÍCIO
-DECLARE nota1, nota2, media NUMÉRICO 
-ESCREVA "Digite a primeira nota do aluno " 
-LEIA nota1 
-ESCREVA "Digite a segunda nota do aluno: " 
-LEIA nota2  = (nota1 + nota2) / 2
-SE media >= 6.0 ENTAO ESCREVA "Aluno aprovado!" 
-SENAO
-ESCREVA "Aluno reprovado!" 
- FIM_SE 
- FIM
+```java
+ALGORTIMO SituacaoAluno
+DECLARE nota1, nota2, media: REAL
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA "Digite a nota 1:"
+
+    // Insira seu comentário
+    LEIA nota1
+
+    // Insira seu comentário
+    ESCREVA "Digite a nota 2:"
+
+    // Insira seu comentário
+    LEIA nota2
+
+    // Insira seu comentário
+    SE nota1 >= 0 E nota2 >= 0 ENTAO
+
+        // Insira seu comentário
+        media =  (nota1 + nota2)/2
+
+        // Insira seu comentário
+        SE media >= 7 ENTAO
+            ESCREVA "O aluno está aprovado!"
+
+        // Insira seu comentário
+        SENAO
+            "O aluno está reprovado!"
+
+        FIM_SE
+
+    // Insira seu comentário
+    SENAO
+        ESCREVA "A nota deve ser maior que zero!"
+
+    FIM_SE
+
+FIM
 ```
 
-#### Teste de mesa (1 ponto)
+#### Tabela de testes (1 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| nota1 | nota2 | nota1 >= 0 E nota2 >= 0 | media        | saĩda | 
+| --    | --    | --                      | --           | --    | 
+| -1    | 0     | False                   |              | A nota deve ser maior que zero! | 
+| 0     | 0     | True                    | (0+0)/2 = 0  | O aluno está reprovado!|
+| 4     | 8     | True                    | (4+8)/2 = 6  | O aluno está reprovado!|
+| 4     | 10    | True                    | (4+10)/2 = 7 | O aluno está aprovado!|
 
 ## Exercício 04 (3 pontos)
 Represente, em fluxograma e pseudocódigo, um algoritmo que, a partir da idade do candidato(a), determinar se pode ou não tirar a CNH. 
@@ -149,38 +209,66 @@ Caso não atender a restrição de idade, calcular quantos anos faltam para o ca
 #### Fluxograma (1.0 ponto)
 
 ```mermaid
-flowchart TD 
-A([INÍCIO]) --> B{Digite a idade do candidato} 
-B --> C[\idade\] 
-C --> D{idade >= 18} 
-D --TRUE--> E{Exibir Candidato apto para tirar CNH} 
-E --> F([FIM]) 
-D --FALSE--> G{Exibir Candidato não apto para tirar CNH} 
-G --> H{calcular anos que faltam} 
-H --> I([FIM])
+flowchart TD
+A([INICIO]) --> B{{"Digite a sua idade:"}}
+B --> C[/idade/]
+C --> D{idade < 0}
+D --FALSE--> E{idade >= 18}
+E --FALSE--> F[anos_apto = 18 - idade]
+F --> G{{Faltam, anos_apto, anos para o candidato estar apto!}}
+G --> H([FIM])
+E --TRUE--> I{{"O candidato está apto a tirar a CNH!"}}
+I --> H
+D --TRUE--> J{{"A idade deve ser maior que zero!"}}
+J --> H 
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
-```
-ALGORITMO verificar_cnh 
-INÍCIO 
-DECLARE idade, idade_minima, anos_faltando INTEIRO 
-idade_minima = 18
-ESCREVA "Digite a idade do candidato: " 
-LEIA idade 
-SE idade >= idade_minima 
-ENTAO 
-ESCREVA "O candidato pode tirar a CNH." 
-SENAO anos_faltando = idade_minima - idade 
-ESCREVA "Só poderá tirar a CNH após" anos_faltando "ano(s)"
-FIM_SE 
+```java
+ALGORTIMO AptoCNH
+DECLARE idade, anos_apto: INTEIRO
+
+INICIO
+
+    // Insira seu comentário
+    ESCREVA ""Digite a sua idade:"
+
+    // Insira seu comentário
+    LEIA idade
+
+    // Insira seu comentário
+    SE idade < 0 ENTAO
+        ESCREVA "A idade deve ser maior que zero!"
+
+    // Insira seu comentário
+    SENAO
+
+        // Insira seu comentário
+        SE idade >= 18 ENTAO
+            ESCREVA "O candidato está apto a tirar a CNH!"
+
+        // Insira seu comentário
+        SENAO
+
+            // Insira seu comentário
+            anos_apto <- 18 - idade
+
+            // Insira seu comentário
+            ESCREVA "Faltam", anos_apto, "ano(s) para o candidato estar apto!"
+
+        FIM_SE
+
+    FIM_SE
+
 FIM
 ```
 
-#### Teste de mesa (1.0 ponto)
+#### Tabela de testes (1.0 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| idade | idade < 0 | idade >= 18 | anos_apto | saída                                         | 
+| --    | --        | --          | --        | --                                            | 
+| -1    | True      |             |           |                                               |
+| 0     | False     | False       | 18-0 = 18 | Faltam 18 ano(s) para o candidato estar apto! |
+| 17    | False     | False       | 18-17 = 1 | Faltam 1 ano(s) para o candidato estar apto!  |
+| 18    | False     | True        |           | O candidato está apto a tirar a CNH!          |
